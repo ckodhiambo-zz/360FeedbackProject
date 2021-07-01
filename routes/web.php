@@ -49,6 +49,14 @@ Route::post('/create-questions', [App\Http\Controllers\SurveyController::class, 
 Route::get('/category-tab', [App\Http\Controllers\SurveyController::class, 'CategoryTab']);
 Route::get('/feedback-categories/{id}', [App\Http\Controllers\SurveyController::class, 'postFeedback']);
 
+Route::get('/submit-results', [App\Http\Controllers\SurveyController::class, 'SubmitResults']);
+Route::post('/submit-results', [App\Http\Controllers\SurveyController::class, 'SubmitResults'])->name('results.create');
+
+Route::get('/graphical-results', [App\Http\Controllers\SurveyController::class, 'graph']);
+Route::get('/majibu', [App\Http\Controllers\SurveyController::class, 'results']);
+
+Route::get('/raters-info', [App\Http\Controllers\SurveyController::class, 'RatersInfo']);
+
 
 Auth::routes();
 

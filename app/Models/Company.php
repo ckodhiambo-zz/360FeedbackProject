@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class Company extends Model
@@ -14,18 +15,18 @@ class Company extends Model
         'name'
     ];
 
-    public function departments()
+    public function departments(): HasMany
     {
-        return $this->belongsToMany(Department::class);
+        return $this->hasMany(Department::class);
     }
 
-    public function employees()
+    public function employees(): HasMany
     {
-        return $this->belongsToMany(Employee::class);
+        return $this->hasMany(Employee::class);
     }
 
-    public function supervisors()
+    public function supervisors(): HasMany
     {
-        return $this->belongsToMany(Supervisor::class);
+        return $this->hasMany(Supervisor::class);
     }
 }

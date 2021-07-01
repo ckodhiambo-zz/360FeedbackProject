@@ -28,10 +28,14 @@
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
         "@vue/compiler-sfc": "^3.1.1",
+        "admin-lte": "^3.1.0",
         "bootstrap-vue": "^2.21.2",
         "mdb-ui-kit": "^3.6.0",
+        "mdbootstrap": "^4.19.2",
+        "npm-watch": "^0.10.0",
         "vue-axios": "^3.2.4",
         "vue-router": "^3.5.1",
+        "watch-run": "^1.2.5",
         "webpack": "^5.38.1",
         "webpack-dev-server": "^3.11.2"
     }

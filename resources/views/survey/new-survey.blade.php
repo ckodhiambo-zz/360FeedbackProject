@@ -133,9 +133,28 @@
                                             <div class="table-responsive">
                                                 <table class="table table-bordered" id="dynamic_field1">
                                                     <tr>
-                                                        <td><input type="text" name="rating_level[]"
+                                                        <td><input type="text" name="ratings[1][]"
                                                                    placeholder="Rating Level"
-                                                                   class="form-control name_list"/></td>
+                                                                   class="form-control name_list"/>
+                                                            <br>
+                                                            <div class="form-group">
+                                                                <select class="custom-select" name="ratings[1][]"
+                                                                        required>
+                                                                    <option selected>Select Rating Value</option>
+                                                                    <option value="0">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
                                                         <td>
                                                             <button type="button" name="add_rating" id="add_rating"
                                                                     class="btn btn-success">Add More
@@ -222,7 +241,27 @@
         var i = 1;
         $('#add_rating').click(function () {
             i++;
-            $('#dynamic_field1').append('<tr id="row' + i + '"><td><input type="text" name="rating_level[]" placeholder="Rating Level" class="form-control name_list" /></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+            $('#dynamic_field1').append('<tr id="row' + i + '">' +
+                '<td>' +
+                '<input type="text" name="ratings[' + i + '][]" placeholder="Rating Level" class="form-control name_list" />' +
+                '<br>' +
+                '<select name="ratings[' + i + '][]" class="custom-select" >' +
+                '<option selected>Select Rating Value</option>' +
+                '<option value="0">0</option>' +
+                '<option value="1">1</option>' +
+                '<option value="2">2</option>' +
+                '<option value="3">3</option>' +
+                '<option value="4">4</option>' +
+                '<option value="5">5</option>' +
+                '<option value="6">6</option>' +
+                '<option value="7">7</option>' +
+                '<option value="8">8</option>' +
+                '<option value="9">9</option>' +
+                '<option value="10">10</option>' +
+
+                '</select>' +
+                '</td>' +
+                '<td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function () {
             var button_id = $(this).attr("id");

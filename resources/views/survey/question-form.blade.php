@@ -68,24 +68,23 @@
                               autocomplete="off">
                             @csrf
                             @foreach($survey->categories as $item)
+
                                 <fieldset>
-                                    {{--                                    <input type="text" name="item" value="{{$item->id}}" hidden>--}}
                                     <div class="form-section">
                                         <div class="card-header text-white bg-info">
                                             <h5>{{ $survey->survey_title }} - {{ $item->category_name }} Category</h5>
                                         </div>
                                         <br>
-
-                                    {{--                                    @foreach($survey->categories as $item)--}}
-                                    <!-- Dropdown Question Input Start-->
-                                        <input type="text" name="item" value="{{$item->id}}" hidden>
+                                        <!-- Dropdown Question Input Start-->
+                                        {{--                                        <input type="text" name="item" value="{{$item->id}}" hidden>--}}
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="dynamic_field-{{$item->id}}">
                                                 <tr>
                                                     <td>
-                                                        <input type="text" name="question_name[]"
+                                                        <input type="text" name="question_name[{{$item->id}}][]"
                                                                placeholder="New Question"
                                                                class="form-control name_list"/></td>
+
                                                     <td>
                                                         <button type="button" name="add" id="add-{{$item->id}}"
                                                                 class="btn btn-success"
@@ -96,7 +95,7 @@
                                             </table>
                                         </div>
                                         <!-- Dropdown Question Input End -->
-                                        {{--                                    @endforeach--}}
+
                                     </div>
                                 </fieldset>
                             @endforeach
@@ -163,12 +162,12 @@
         $('[id^=add]').click(function () {
 
             // Since each button ends with a number unique to the category, we pick that last digit using this code
-            var bNumber = this.id.substr(-1);
+            var bNumber = this.id.split('-').pop();
             i++;
 
             // We append the last digit obtain above to the 'dynamic_field' element which is meant to have the same
             // last digit (which is the category_id) so that only the matching category table receives an added question
-            $('#dynamic_field-' + bNumber).append('<tr id="row' + i + '"><td><input type="text" name="question_name[]" placeholder="New Question" class="form-control name_list" /></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+            $('#dynamic_field-' + bNumber).append('<tr id="row' + i + '"><td><input type="text" name="question_name[' + bNumber + '][]" placeholder="New Question" class="form-control name_list" /></td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function () {
             var button_id = $(this).attr("id");

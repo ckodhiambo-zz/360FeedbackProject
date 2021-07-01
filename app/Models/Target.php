@@ -12,7 +12,7 @@ class Target extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rating_level',
+        'rating_level', 'rating_value',
     ];
 
     public function surveys(): BelongsToMany
@@ -24,4 +24,6 @@ class Target extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+
 }

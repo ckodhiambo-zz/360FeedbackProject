@@ -46,7 +46,6 @@
                             <th>Email</th>
                             <th>Business Unit</th>
                             <th>Department</th>
-                            <th>Supervisor</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -65,9 +64,6 @@
                                     <td style="font-family: Verdana, sans-serif;">{{ $item->name }}</td>
                                 @endforeach
 
-                                @foreach($employee->supervisors as $item)
-                                    <td style="font-family: Verdana, sans-serif;">{{ $item->name }}</td>
-                                @endforeach
                                 <td>
                                     <a href="#" class="btn btn-info btn-block"
                                        style="font-family:courier,arial,helvetica;margin-top:4px">Profile</a>

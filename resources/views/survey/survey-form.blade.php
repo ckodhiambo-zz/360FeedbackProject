@@ -68,7 +68,7 @@
             <div class="col-md-12 offest-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <form class="personal-info" method="post" action="{{ route('question.create') }}"
+                        <form class="personal-info" method="post" action="{{ route('results.create') }}"
                               enctype="multipart/form-data" autocomplete="off">
                             @csrf
                             @foreach($survey->categories as $category)
@@ -81,21 +81,23 @@
                                         @foreach($category->questions as $question)
                                             <div class="accordion" id="accordionExample">
                                                 <div class="card">
+                                                    <input type="number" name="question" value="{{$question->id}}"
+                                                           hidden>
                                                     <div class="card-header" id="{{$question->id}}">
                                                         <p> {{$question->question_name}}</p>
                                                     </div>
                                                     <div class="bs-example">
-                                                        <form>
-                                                            @foreach($survey->ratings as $key => $rating)
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                           name="rating_level"
-                                                                           id="{{$rating->id}}" value="{{ $key + 1 }}">
-                                                                    <label class="form-check-label"
-                                                                           for="{{$rating->id}}">{{ $rating->rating_level }}</label>
-                                                                </div>
-                                                            @endforeach
-                                                        </form>
+
+                                                        @foreach($survey->ratings as $rating)
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio"
+                                                                       name="ratings[{{$question->id}}]"
+                                                                       id="{{$rating->id}}" value="{{$rating->id}}">
+                                                                <label class="form-check-label"
+                                                                       for="{{$rating->id}}">{{ $rating->rating_level }}</label>
+                                                            </div>
+                                                        @endforeach
+
                                                     </div>
 
                                                 </div>

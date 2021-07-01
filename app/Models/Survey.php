@@ -29,11 +29,13 @@ class Survey extends Model
         return $this->hasMany(Category::class);
     }
 
-
     public function ratings(): BelongsToMany
     {
         return $this->belongsToMany(Target::class);
     }
+
+
+
 
 //    public function questions(): HasMany
 //    {

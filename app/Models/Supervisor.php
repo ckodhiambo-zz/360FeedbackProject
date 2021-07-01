@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Supervisor extends Model
 {
@@ -22,4 +23,10 @@ class Supervisor extends Model
     {
         return $this->belongsToMany(Company::class);
     }
+
+    public function directreports(): HasMany
+    {
+        return $this->hasMany(DirectReports::class);
+    }
+
 }
